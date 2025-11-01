@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title desc">
+  <title id="title">ChocoChip Classic Detail</title>
+  <desc id="desc">Detail cookies chocochip</desc>
+  <rect width="600" height="600" rx="48" fill="#fde68a" />
+  <circle cx="300" cy="300" r="210" fill="#f59e0b" stroke="#b45309" stroke-width="12" />
+  <g fill="#78350f">
+    <circle cx="220" cy="240" r="18" />
+    <circle cx="300" cy="220" r="16" />
+    <circle cx="380" cy="250" r="14" />
+    <circle cx="250" cy="320" r="16" />
+    <circle cx="340" cy="360" r="18" />
+    <circle cx="280" cy="400" r="20" />
+    <circle cx="360" cy="420" r="16" />
+  </g>
+</svg>

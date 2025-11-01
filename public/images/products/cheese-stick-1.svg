@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title desc">
+  <title id="title">Cheese Stick Savory</title>
+  <desc id="desc">Ilustrasi cheese stick gurih</desc>
+  <rect width="600" height="600" rx="48" fill="#fef9c3" />
+  <g stroke="#d97706" stroke-width="12" stroke-linecap="round">
+    <line x1="200" y1="220" x2="420" y2="320" />
+    <line x1="180" y1="280" x2="400" y2="380" />
+    <line x1="220" y1="340" x2="440" y2="440" />
+    <line x1="210" y1="400" x2="380" y2="480" />
+  </g>
+  <g fill="#facc15">
+    <rect x="160" y="200" width="260" height="60" rx="28" />
+    <rect x="140" y="260" width="260" height="60" rx="28" />
+    <rect x="200" y="320" width="260" height="60" rx="28" />
+    <rect x="180" y="380" width="220" height="60" rx="28" />
+  </g>
+  <text x="50%" y="520" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#ca8a04" text-anchor="middle">
+    Cheese Stick Savory
+  </text>
+</svg>

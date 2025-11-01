@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title desc">
+  <title id="title">Red Velvet Crinkle</title>
+  <desc id="desc">Ilustrasi cookies red velvet dengan gula halus</desc>
+  <rect width="600" height="600" rx="48" fill="#fee2e2" />
+  <circle cx="300" cy="300" r="210" fill="#be123c" />
+  <circle cx="300" cy="300" r="160" fill="none" stroke="#fef2f2" stroke-width="20" stroke-dasharray="22 18" />
+  <circle cx="300" cy="300" r="120" fill="none" stroke="#fee2e2" stroke-width="8" stroke-dasharray="12 12" />
+  <text x="50%" y="520" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#9f1239" text-anchor="middle">
+    Red Velvet Crinkle
+  </text>
+</svg>

@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Site {
+  id                 Int      @id @default(1)
+  name               String
+  domain             String
+  locale             String   @default("id-ID")
+  whatsapp           String
+  email              String
+  phone              String
+  address            String
+  hours              String?
+  logoLight          String
+  logoDark           String
+  instagram          String?
+  tiktok             String?
+  facebook           String?
+  defaultTitle       String
+  defaultDescription String
+  keywords           Json?
+  ogImage            String
+  twitterHandle      String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Category {
+  id          String    @id
+  slug        String    @unique
+  name        String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Product {
+  id            String         @id
+  slug          String         @unique
+  sku           String?
+  name          String
+  price         Int
+  currency      String         @default("IDR")
+  shortDesc     String
+  longDesc      String
+  rating        Float?
+  weightGram    Int?
+  ingredients   Json?
+  allergens     Json?
+  shelfLifeDays Int?
+  storage       String?
+  bestSeller    Boolean        @default(false)
+  tags          Json?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  categoryId    String
+  category      Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  images        ProductImage[]
+  variants      Variant[]
+}
+
+model ProductImage {
+  id        Int     @id @default(autoincrement())
+  src       String
+  alt       String
+  width     Int?
+  height    Int?
+  sortOrder Int     @default(0)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Variant {
+  id        Int             @id @default(autoincrement())
+  name      String
+  productId String
+  product   Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+  options   VariantOption[]
+}
+
+model VariantOption {
+  id        Int     @id @default(autoincrement())
+  label     String
+  value     String?
+  price     Int
+  variantId Int
+  variant   Variant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+}
+
+model FAQ {
+  id        Int      @id @default(autoincrement())
+  question  String   @unique
+  answer    String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  name      String
+  handle    String?
+  message   String
+  rating    Int
+  source    String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">Cookies Maher Bites</title>
+  <desc id="heroDesc">Ilustrasi cookies dan snack dalam wadah</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#fef3c7" />
+      <stop offset="100%" stop-color="#fcd34d" />
+    </radialGradient>
+    <linearGradient id="plate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)" />
+  <circle cx="400" cy="420" r="260" fill="url(#plate)" />
+  <g fill="#f59e0b" stroke="#b45309" stroke-width="8">
+    <circle cx="320" cy="360" r="90" />
+    <circle cx="460" cy="315" r="70" />
+    <circle cx="435" cy="470" r="100" />
+    <circle cx="315" cy="480" r="60" />
+  </g>
+  <g fill="#92400e">
+    <circle cx="280" cy="340" r="12" />
+    <circle cx="360" cy="390" r="14" />
+    <circle cx="430" cy="290" r="10" />
+    <circle cx="495" cy="340" r="12" />
+    <circle cx="470" cy="460" r="15" />
+    <circle cx="380" cy="500" r="10" />
+  </g>
+  <text x="50%" y="690" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#b45309" text-anchor="middle">
+    Fresh baked setiap hari
+  </text>
+</svg>
