@@ -5,11 +5,11 @@ import { revalidateTag } from 'next/cache';
 
 const siteSeed = {
   id: 1,
-  name: 'Maher Bites',
-  domain: 'https://maherbites.id',
+  name: 'Maher Snack & Cookies',
+  domain: 'https://mahersnackandcookies.id',
   locale: 'id-ID',
   whatsapp: 'https://wa.me/6281234567890',
-  email: 'hello@maherbites.id',
+  email: 'hello@mahersnackandcookies.id',
   phone: '+62 812-3456-7890',
   address: 'Jl. Contoh No. 12, Jakarta Selatan',
   hours: 'Senin–Sabtu 09.00–18.00 WIB',
@@ -18,11 +18,11 @@ const siteSeed = {
   instagram: 'https://instagram.com/maherbites',
   tiktok: 'https://tiktok.com/@maherbites',
   facebook: 'https://facebook.com/maherbites',
-  defaultTitle: 'Maher Bites — Camilan Manis, Bikin Hati Habis',
+  defaultTitle: 'Maher Snack & Cookies — Camilan Manis, Bikin Hati Habis',
   defaultDescription:
-    'Maher Bites menghadirkan cookies dan snack fresh-baked dengan bahan premium. Cocok untuk hampers, event, dan daily treat. Pesan antar cepat area Jabodetabek.',
+    'Maher Snack & Cookies menghadirkan cookies dan snack fresh-baked dengan bahan premium. Cocok untuk hampers, event, dan daily treat. Pesan antar cepat area Jabodetabek.',
   keywords: [
-    'maher bites',
+    'maher snack & cookies',
     'cookies',
     'kue kering',
     'snack box',
@@ -67,7 +67,7 @@ const productSeeds = [
     images: [
       {
         src: '/images/products/chocochip-classic-1.svg',
-        alt: 'ChocoChip Classic Maher Bites',
+        alt: 'ChocoChip Classic Maher Snack & Cookies',
       },
       {
         src: '/images/products/chocochip-classic-2.svg',
@@ -106,7 +106,7 @@ const productSeeds = [
     images: [
       {
         src: '/images/products/redvelvet-crinkle-1.svg',
-        alt: 'Red Velvet Crinkle Maher Bites',
+        alt: 'Red Velvet Crinkle Maher Snack & Cookies',
       },
     ],
     shortDesc: 'Crinkle lembut dengan sentuhan krim keju.',
@@ -140,7 +140,7 @@ const productSeeds = [
     images: [
       {
         src: '/images/products/cheese-stick-1.svg',
-        alt: 'Cheese Stick Savory Maher Bites',
+        alt: 'Cheese Stick Savory Maher Snack & Cookies',
       },
     ],
     shortDesc: 'Camilan gurih keju, kriuk maksimal.',
@@ -167,7 +167,7 @@ const productSeeds = [
     images: [
       {
         src: '/images/products/hampers-sweet-duo-1.svg',
-        alt: 'Hampers Sweet Duo Maher Bites',
+        alt: 'Hampers Sweet Duo Maher Snack & Cookies',
       },
     ],
     shortDesc: 'Paket 2 varian cookies favorit + kartu ucapan.',

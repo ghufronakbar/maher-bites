@@ -59,7 +59,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-semibold text-zinc-900">Masuk Dashboard</h1>
           <p className="mt-2 text-sm text-zinc-600">
-            Gunakan kredensial internal untuk mengelola konten Maher Bites.
+            Gunakan kredensial internal untuk mengelola konten Maher Snack & Cookies.
           </p>
         </div>
         <form action={loginAction} className="space-y-5">

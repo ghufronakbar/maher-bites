@@ -8,7 +8,7 @@ interface StickyWAButtonProps {
 
 export function StickyWAButton({ whatsappUrl }: StickyWAButtonProps) {
   const href = `${whatsappUrl}?text=${encodeURIComponent(
-    'Halo Maher Bites, saya mau tanya dan pesan camilan.',
+    'Halo Maher Snack & Cookies, saya mau tanya dan pesan camilan.',
   )}`;
 
   return (

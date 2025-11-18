@@ -12,7 +12,7 @@ export function USPGrid() {
     <section aria-labelledby="usp-heading" className="border-y border-amber-100 bg-white py-14">
       <Container>
         <h2 id="usp-heading" className="text-center text-2xl font-semibold text-zinc-900">
-          Kenapa Pilih Maher Bites?
+          Kenapa Pilih Maher Snack & Cookies?
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {USPS.map((usp) => (

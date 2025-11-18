@@ -9,7 +9,7 @@ const fetchSiteRecord = withCache<[], Site>(
     if (!site) {
       return {
         id: 1,
-        name: "Maher Bites",
+        name: "Maher Snack & Cookies",
         domain: "https://maherbites.id",
         locale: "id-ID",
         whatsapp: "https://wa.me/6281234567890",
@@ -23,11 +23,11 @@ const fetchSiteRecord = withCache<[], Site>(
         instagram: "https://instagram.com/maherbites",
         tiktok: "https://tiktok.com/@maherbites",
         facebook: "https://facebook.com/maherbites",
-        defaultTitle: "Maher Bites",
-        defaultDescription: "Maher Bites",
+        defaultTitle: "Maher Snack & Cookies",
+        defaultDescription: "Maher Snack & Cookies",
         hours: "Senin–Sabtu 09.00–18.00 WIB",
         keywords: [
-          "maher bites",
+          "maher snack & cookies",
           "cookies",
           "kue kering",
           "snack box",

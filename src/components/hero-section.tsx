@@ -4,14 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/container';
 import { trackWAEvent } from '@/lib/analytics';
+import { Site } from '@prisma/client';
 
 interface HeroSectionProps {
-  whatsappUrl: string;
+  site: Site;
 }
 
-export function HeroSection({ whatsappUrl }: HeroSectionProps) {
-  const waUrl = `${whatsappUrl}?text=${encodeURIComponent(
-    'Halo Maher Bites, saya mau pesan camilan fresh-baked.',
+export function HeroSection({ site }: HeroSectionProps) {
+  const waUrl = `${site.whatsapp}?text=${encodeURIComponent(
+    'Halo Maher Snack & Cookies, saya mau pesan camilan fresh-baked.',
   )}`;
 
   return (
@@ -53,8 +54,8 @@ export function HeroSection({ whatsappUrl }: HeroSectionProps) {
         <div className="w-full lg:w-1/2">
           <div className="relative aspect-square overflow-hidden rounded-3xl border border-amber-100 bg-amber-50 shadow-lg">
             <Image
-              src="/images/hero-maher-bites.svg"
-              alt="Cookies Maher Bites tersusun di piring kayu"
+              src={site.ogImage}
+              alt="Cookies Maher Snack & Cookies tersusun di piring kayu"
               fill
               className="object-cover"
               priority

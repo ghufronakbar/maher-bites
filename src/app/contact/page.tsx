@@ -6,7 +6,7 @@ import { getSite } from '@/data/site';
 export const metadata: Metadata = {
   title: 'Kontak',
   description:
-    'Hubungi Maher Bites untuk pemesanan cookies, snack box, dan hampers. Kami siap membantu konsultasi varian, jadwal kirim, dan kebutuhan perusahaan Anda.',
+    'Hubungi Maher Snack & Cookies untuk pemesanan cookies, snack box, dan hampers. Kami siap membantu konsultasi varian, jadwal kirim, dan kebutuhan perusahaan Anda.',
   alternates: {
     canonical: '/contact',
     languages: {
@@ -21,7 +21,7 @@ export default async function ContactPage() {
     <div className="bg-white py-16">
       <Container className="grid gap-10 lg:grid-cols-2">
         <div className="space-y-6">
-          <h1 className="text-3xl font-bold text-zinc-900">Kontak Maher Bites</h1>
+          <h1 className="text-3xl font-bold text-zinc-900">Kontak Maher Snack & Cookies</h1>
           <p className="text-base text-zinc-600">
             Tim kami siap menjawab pertanyaan Anda seputar varian produk, kapasitas produksi,
             pengiriman, hingga kebutuhan custom.

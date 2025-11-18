@@ -40,7 +40,7 @@ export default async function DashboardLayout({
         <aside className="w-full rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm lg:w-64">
           <h1 className="text-lg font-semibold text-zinc-900">Dashboard</h1>
           <p className="mt-1 text-xs text-zinc-500">
-            Kelola konten Maher Bites dengan cepat.
+            Kelola konten Maher Snack & Cookies dengan cepat.
           </p>
           <nav className="mt-6 space-y-1">
             {dashboardNav.map((item) => (

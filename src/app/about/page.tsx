@@ -5,7 +5,7 @@ import { getSite } from '@/data/site';
 export const metadata: Metadata = {
   title: 'Tentang Kami',
   description:
-    'Kenali Maher Bites: bakery rumahan yang fokus menyajikan cookies premium, snack box praktis, dan hampers cantik dengan rasa tulus.',
+    'Kenali Maher Snack & Cookies: bakery rumahan yang fokus menyajikan cookies premium, snack box praktis, dan hampers cantik dengan rasa tulus.',
   alternates: {
     canonical: '/about',
     languages: {
@@ -27,7 +27,7 @@ export default async function AboutPage() {
             Cerita kami dimulai dari dapur keluarga
           </h1>
           <p className="text-base text-zinc-600">
-            Maher Bites lahir dari kecintaan kami pada baking dan momen berbagi. Setiap batch
+            Maher Snack & Cookies lahir dari kecintaan kami pada baking dan momen berbagi. Setiap batch
             dibuat dalam porsi kecil supaya kualitas rasa dan tekstur selalu konsisten—renyah di luar,
             lembut di dalam.
           </p>
@@ -48,7 +48,7 @@ export default async function AboutPage() {
               kualitas bahan, pelayanan ramah, dan pengiriman tepat waktu.
             </p>
             <p className="mt-4">
-              Tim Maher Bites siap membantu merancang hampers, snack box, hingga paket custom untuk
+              Tim Maher Snack & Cookies siap membantu merancang hampers, snack box, hingga paket custom untuk
               event perusahaan Anda.
             </p>
           </div>

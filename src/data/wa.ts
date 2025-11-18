@@ -17,7 +17,7 @@ export function createWAOrderLink({
   note,
 }: WAParams): string {
   const lines = [
-    'Halo Maher Bites, saya ingin pesan:',
+    'Halo Maher Snack & Cookies, saya ingin pesan:',
     `• Produk: ${product.name}`,
     variantOptionLabel ? `• Varian: ${variantOptionLabel}` : undefined,
     `• Qty: ${qty}`,

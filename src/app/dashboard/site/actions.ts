@@ -40,7 +40,7 @@ export async function updateSiteAction(
 ): Promise<ActionResponse> {
   const keywordsInput = toNullableString(formData.get('keywords')) ?? '';
   const data = {
-    name: formData.get('name')?.toString() ?? 'Maher Bites',
+    name: formData.get('name')?.toString() ?? 'Maher Snack & Cookies',
     domain: formData.get('domain')?.toString() ?? 'https://maherbites.id',
     locale: formData.get('locale')?.toString() ?? 'id-ID',
     whatsapp: formData.get('whatsapp')?.toString() ?? '',

@@ -107,7 +107,7 @@ export async function upsertProductAction(
       : [
           {
             src: '/images/placeholder-product.svg',
-            alt: name ? `${name} image` : 'Placeholder Maher Bites',
+            alt: name ? `${name} image` : 'Placeholder Maher Snack & Cookies',
             width: null,
             height: null,
             sortOrder: 0,

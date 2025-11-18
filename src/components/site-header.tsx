@@ -55,7 +55,7 @@ export function SiteHeader({ site }: SiteHeaderProps) {
           <div className="hidden md:block">
             <a
               href={`${site.whatsapp}?text=${encodeURIComponent(
-                "Halo Maher Bites, saya ingin pesan camilan."
+                "Halo Maher Snack & Cookies, saya ingin pesan camilan."
               )}`}
               className="inline-flex items-center rounded-full bg-emerald-500 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
             >

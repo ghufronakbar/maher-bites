@@ -4,17 +4,23 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Container } from "@/components/container";
 import { ProductDetail } from "@/components/product-detail";
-import { getAllProducts, getProductBySlug } from "@/data/products";
+import {
+  // getAllProducts,
+  getProductBySlug,
+} from "@/data/products";
 import { getSite } from "@/data/site";
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-  const products = await getAllProducts();
-  return products.map((product) => ({ slug: product.slug }));
-}
+// export async function generateStaticParams() {
+//   const products = await getAllProducts();
+//   return products.map((product) => ({ slug: product.slug }));
+// }
+
+export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

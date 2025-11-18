@@ -37,12 +37,12 @@ export default async function HomePage() {
   };
 
   const consultationUrl = `${site.whatsapp}?text=${encodeURIComponent(
-    "Halo Maher Bites, saya ingin konsultasi untuk hampers/snack box."
+    "Halo Maher Snack & Cookies, saya ingin konsultasi untuk hampers/snack box."
   )}`;
 
   return (
     <>
-      <HeroSection whatsappUrl={site.whatsapp} />
+      <HeroSection site={site} />
       <USPGrid />
       <section
         aria-labelledby="best-sellers-heading"
@@ -55,7 +55,7 @@ export default async function HomePage() {
                 id="best-sellers-heading"
                 className="text-2xl font-semibold text-zinc-900"
               >
-                Favorit Maher Bites
+                Favorit Maher Snack & Cookies
               </h2>
               <p className="mt-2 text-sm text-zinc-600">
                 Rekomendasi pelanggan paling sering repeat order.

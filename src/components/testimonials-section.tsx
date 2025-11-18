@@ -19,7 +19,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
             Cerita Pelanggan
           </h2>
           <p className="mt-3 text-sm text-zinc-600">
-            Mereka sudah mencoba Maher Bites untuk momen spesial maupun ngemil harian.
+            Mereka sudah mencoba Maher Snack & Cookies untuk momen spesial maupun ngemil harian.
           </p>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">

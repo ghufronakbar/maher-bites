@@ -8,7 +8,7 @@ import { getSite } from "@/data/site";
 export const metadata: Metadata = {
   title: "Katalog Produk",
   description:
-    "Jelajahi katalog Maher Bites: cookies chewy, snack box gurih, dan hampers cantik untuk hadiah maupun acara spesial.",
+    "Jelajahi katalog Maher Snack & Cookies: cookies chewy, snack box gurih, dan hampers cantik untuk hadiah maupun acara spesial.",
   alternates: {
     canonical: "/products",
     languages: {
