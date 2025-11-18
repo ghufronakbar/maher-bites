@@ -1,46 +1,76 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { deleteFAQ, upsertFAQ } from '@/data/faqs';
+import { z } from 'zod';
 
-export async function upsertFAQAction(formData: FormData) {
+const UpsertFAQSchema = z.object({
+  id: z.number().optional(),
+  question: z.string(),
+  answer: z.string(),
+  sortOrder: z.number(),
+});
+
+type ActionResponse = {
+  success: boolean;
+  message: string;
+};
+
+export async function upsertFAQAction(formData: FormData): Promise<ActionResponse> {
   const id = formData.get('id')?.toString();
-  const question = formData.get('question')?.toString().trim();
-  const answer = formData.get('answer')?.toString().trim();
-  const sortOrder = Number(formData.get('sortOrder') ?? 0);
+  const data = {
+    id: id ? Number(id) : undefined,
+    question: formData.get('question')?.toString().trim(),
+    answer: formData.get('answer')?.toString().trim(),
+    sortOrder: Number(formData.get('sortOrder') ?? 0),
+  };
 
-  if (!question || !answer) {
-    redirect('/dashboard/faqs?status=error');
+  const parsed = UpsertFAQSchema.safeParse(data);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      message: 'Gagal menyimpan FAQ, data tidak valid',
+    };
   }
 
   try {
-    await upsertFAQ({
-      id: id ? Number(id) : undefined,
-      question,
-      answer,
-      sortOrder: Number.isFinite(sortOrder) ? sortOrder : 0,
-    });
+    await upsertFAQ(parsed.data);
     revalidatePath('/dashboard/faqs');
-    redirect('/dashboard/faqs?status=success');
+    return {
+      success: true,
+      message: 'FAQ berhasil disimpan',
+    };
   } catch (error) {
     console.error('upsertFAQAction error', error);
-    redirect('/dashboard/faqs?status=error');
+    return {
+      success: false,
+      message: 'Gagal menyimpan FAQ',
+    };
   }
 }
 
-export async function deleteFAQAction(formData: FormData) {
+export async function deleteFAQAction(formData: FormData): Promise<ActionResponse> {
   const id = formData.get('id');
   if (!id) {
-    redirect('/dashboard/faqs?status=error');
+    return {
+      success: false,
+      message: 'Gagal menghapus FAQ, ID tidak ditemukan',
+    };
   }
 
   try {
     await deleteFAQ(Number(id));
     revalidatePath('/dashboard/faqs');
-    redirect('/dashboard/faqs?status=deleted');
+    return {
+      success: true,
+      message: 'FAQ berhasil dihapus',
+    };
   } catch (error) {
     console.error('deleteFAQAction error', error);
-    redirect('/dashboard/faqs?status=error');
+    return {
+      success: false,
+      message: 'Gagal menghapus FAQ',
+    };
   }
 }

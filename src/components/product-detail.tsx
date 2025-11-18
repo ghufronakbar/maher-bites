@@ -3,7 +3,8 @@
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { createWAOrderLink } from '@/data/wa';
-import type { Product, VariantOption } from '@/data/schema';
+import type { ProductRecord as Product } from '@/data/products';
+import type { VariantOption } from '@prisma/client';
 import { trackWAEvent } from '@/lib/analytics';
 import { formatCurrency } from '@/lib/utils';
 
@@ -69,7 +70,7 @@ export function ProductDetail({ product, whatsappUrl }: ProductDetailProps) {
       <div className="flex flex-col gap-6 rounded-3xl border border-amber-100 bg-white p-8 shadow-sm">
         <div>
           <p className="text-sm font-medium uppercase tracking-wide text-emerald-600">
-            {product.tags.join(' • ')}
+            {Array.isArray(product.tags) && product.tags.join(' • ')}
           </p>
           <h1 className="mt-2 text-3xl font-bold text-zinc-900">{product.name}</h1>
           <p className="mt-3 text-base text-zinc-600">{product.longDesc}</p>
@@ -80,7 +81,7 @@ export function ProductDetail({ product, whatsappUrl }: ProductDetailProps) {
               Harga
             </span>
             <p className="mt-1 text-2xl font-semibold text-zinc-900">
-              {formatCurrency(activePrice, product.currency)}
+              {formatCurrency(activePrice, product.currency as 'IDR')}
             </p>
           </div>
           {product.variants?.length ? (
@@ -104,7 +105,7 @@ export function ProductDetail({ product, whatsappUrl }: ProductDetailProps) {
                     >
                       <span>{option.label}</span>
                       <span className="mt-1 block text-xs text-zinc-500">
-                        {formatCurrency(option.price, product.currency)}
+                        {formatCurrency(option.price, product.currency as 'IDR')}
                       </span>
                     </button>
                   );
@@ -152,12 +153,16 @@ export function ProductDetail({ product, whatsappUrl }: ProductDetailProps) {
         <div className="space-y-3 rounded-2xl bg-amber-50/80 p-5 text-sm text-zinc-600">
           {product.ingredients ? (
             <p>
-              <span className="font-semibold text-zinc-800">Bahan:</span> {product.ingredients.join(', ')}
+              <span className="font-semibold text-zinc-800">Bahan:</span>{' '}
+              {Array.isArray(product.ingredients) &&
+                product.ingredients.join(', ')}
             </p>
           ) : null}
           {product.allergens ? (
             <p>
-              <span className="font-semibold text-zinc-800">Alergen:</span> {product.allergens.join(', ')}
+              <span className="font-semibold text-zinc-800">Alergen:</span>{' '}
+              {Array.isArray(product.allergens) &&
+                product.allergens.join(', ')}
             </p>
           ) : null}
           {product.storage ? (

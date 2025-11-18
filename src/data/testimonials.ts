@@ -1,6 +1,6 @@
-import type { Testimonial } from './schema';
 import { prisma } from '@/lib/prisma';
 import { CACHE_TAGS, revalidateTag, withCache } from '@/lib/cache';
+import type { Testimonial } from '@prisma/client';
 
 const fetchTestimonials = withCache(
   async () =>
@@ -11,16 +11,7 @@ const fetchTestimonials = withCache(
 );
 
 export async function getTestimonials(): Promise<Testimonial[]> {
-  const testimonials = await fetchTestimonials();
-  return testimonials.map((testimonial) => ({
-    id: testimonial.id,
-    name: testimonial.name,
-    handle: testimonial.handle ?? undefined,
-    message: testimonial.message,
-    rating: testimonial.rating,
-    source: (testimonial.source as Testimonial['source']) ?? undefined,
-    sortOrder: testimonial.sortOrder ?? undefined,
-  }));
+  return await fetchTestimonials();
 }
 
 interface TestimonialInput {

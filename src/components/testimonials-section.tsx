@@ -1,4 +1,4 @@
-import type { Testimonial } from '@/data/schema';
+import type { Testimonial } from '@prisma/client';
 import { Container } from '@/components/container';
 
 interface TestimonialsSectionProps {

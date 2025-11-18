@@ -1,6 +1,6 @@
-import type { FAQ } from './schema';
 import { prisma } from '@/lib/prisma';
 import { CACHE_TAGS, revalidateTag, withCache } from '@/lib/cache';
+import type { FAQ } from '@prisma/client';
 
 const fetchFaqs = withCache(
   async () =>
@@ -11,13 +11,7 @@ const fetchFaqs = withCache(
 );
 
 export async function getFAQs(): Promise<FAQ[]> {
-  const faqs = await fetchFaqs();
-  return faqs.map((faq) => ({
-    id: faq.id,
-    q: faq.question,
-    a: faq.answer,
-    sortOrder: faq.sortOrder ?? undefined,
-  }));
+  return await fetchFaqs();
 }
 
 interface FAQInput {

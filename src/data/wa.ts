@@ -1,5 +1,5 @@
 // import { site } from './site';
-import type { Product } from './schema';
+import type { ProductRecord as Product } from './products';
 
 interface WAParams {
   product: Product;

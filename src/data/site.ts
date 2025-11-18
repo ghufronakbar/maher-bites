@@ -1,4 +1,4 @@
-import type { SEOConfig, Site as SiteDTO } from "./schema";
+import type { SEOConfig } from "./schema";
 import { prisma } from "@/lib/prisma";
 import { CACHE_TAGS, revalidateTag, withCache } from "@/lib/cache";
 import { Site } from "@prisma/client";
@@ -44,28 +44,8 @@ const fetchSiteRecord = withCache<[], Site>(
   { key: ["site", "record"], tags: [CACHE_TAGS.site], revalidate: false }
 );
 
-export async function getSite(): Promise<SiteDTO> {
-  const site = await fetchSiteRecord();
-
-  return {
-    name: site.name,
-    domain: site.domain,
-    locale: (site.locale as SiteDTO["locale"]) ?? "id-ID",
-    whatsapp: site.whatsapp,
-    email: site.email,
-    phone: site.phone,
-    address: site.address,
-    hours: site.hours ?? undefined,
-    social: {
-      instagram: site.instagram ?? undefined,
-      tiktok: site.tiktok ?? undefined,
-      facebook: site.facebook ?? undefined,
-    },
-    logo: {
-      light: site.logoLight,
-      dark: site.logoDark,
-    },
-  };
+export async function getSite(): Promise<Site> {
+  return await fetchSiteRecord();
 }
 
 export async function getSEOConfig(): Promise<SEOConfig> {

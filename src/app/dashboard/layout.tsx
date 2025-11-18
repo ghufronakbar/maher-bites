@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_NAME } from "@/constants";
 import { verifyAuthToken } from "@/lib/auth";
+import { Toaster } from "sonner";
 
 const dashboardNav = [
   { href: "/dashboard", label: "Ringkasan" },
@@ -34,6 +35,7 @@ export default async function DashboardLayout({
   await verfifyOrRedirectToLogin();
   return (
     <div className="min-h-screen bg-zinc-100">
+      <Toaster />
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8 sm:px-6 lg:flex-row lg:px-8">
         <aside className="w-full rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm lg:w-64">
           <h1 className="text-lg font-semibold text-zinc-900">Dashboard</h1>

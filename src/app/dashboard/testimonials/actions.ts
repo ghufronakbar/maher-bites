@@ -1,54 +1,88 @@
-'use server';
+"use server";
 
-import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
-import { deleteTestimonial, upsertTestimonial } from '@/data/testimonials';
+import { revalidatePath } from "next/cache";
+import { deleteTestimonial, upsertTestimonial } from "@/data/testimonials";
+import { z } from "zod";
 
-export async function upsertTestimonialAction(formData: FormData) {
-  const id = formData.get('id')?.toString();
-  const name = formData.get('name')?.toString().trim();
-  const message = formData.get('message')?.toString().trim();
-  const rating = Number(formData.get('rating') ?? 0);
+const UpsertTestimonialSchema = z.object({
+  id: z.number().optional(),
+  name: z.string(),
+  handle: z.string().nullable().optional(),
+  message: z.string(),
+  rating: z.number(),
+  source: z
+    .enum(["instagram", "tiktok", "whatsapp", "google"])
+    .optional(),
+  sortOrder: z.number(),
+});
 
-  if (!name || !message || !Number.isFinite(rating)) {
-    redirect('/dashboard/testimonials?status=error');
+type ActionResponse = {
+  success: boolean;
+  message: string;
+};
+
+export async function upsertTestimonialAction(
+  formData: FormData,
+): Promise<ActionResponse> {
+  const id = formData.get("id")?.toString();
+  const data = {
+    id: id ? Number(id) : undefined,
+    name: formData.get("name")?.toString().trim(),
+    handle: formData.get("handle")?.toString() ?? undefined,
+    message: formData.get("message")?.toString().trim(),
+    rating: Number(formData.get("rating") ?? 0),
+    source: formData.get("source")?.toString(),
+    sortOrder: Number(formData.get("sortOrder") ?? 0) || 0,
+  };
+
+  const parsed = UpsertTestimonialSchema.safeParse(data);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      message: "Gagal menyimpan testimoni, data tidak valid",
+    };
   }
 
   try {
-    await upsertTestimonial({
-      id: id ? Number(id) : undefined,
-      name,
-      handle: formData.get('handle')?.toString() ?? null,
-      message,
-      rating,
-      source: formData.get('source')?.toString() as
-        | 'instagram'
-        | 'tiktok'
-        | 'whatsapp'
-        | 'google'
-        | undefined,
-      sortOrder: Number(formData.get('sortOrder') ?? 0) || 0,
-    });
-    revalidatePath('/dashboard/testimonials');
-    redirect('/dashboard/testimonials?status=success');
+    await upsertTestimonial(parsed.data);
+    revalidatePath("/dashboard/testimonials");
+    return {
+      success: true,
+      message: "Testimoni berhasil disimpan",
+    };
   } catch (error) {
-    console.error('upsertTestimonialAction error', error);
-    redirect('/dashboard/testimonials?status=error');
+    console.error("upsertTestimonialAction error", error);
+    return {
+      success: false,
+      message: "Gagal menyimpan testimoni",
+    };
   }
 }
 
-export async function deleteTestimonialAction(formData: FormData) {
-  const id = formData.get('id');
+export async function deleteTestimonialAction(
+  formData: FormData,
+): Promise<ActionResponse> {
+  const id = formData.get("id");
   if (!id) {
-    redirect('/dashboard/testimonials?status=error');
+    return {
+      success: false,
+      message: "Gagal menghapus testimoni, ID tidak ditemukan",
+    };
   }
 
   try {
     await deleteTestimonial(Number(id));
-    revalidatePath('/dashboard/testimonials');
-    redirect('/dashboard/testimonials?status=deleted');
+    revalidatePath("/dashboard/testimonials");
+    return {
+      success: true,
+      message: "Testimoni berhasil dihapus",
+    };
   } catch (error) {
-    console.error('deleteTestimonialAction error', error);
-    redirect('/dashboard/testimonials?status=error');
+    console.error("deleteTestimonialAction error", error);
+    return {
+      success: false,
+      message: "Gagal menghapus testimoni",
+    };
   }
 }

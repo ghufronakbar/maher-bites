@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { Site } from '@/data/schema';
+import type { Site } from '@prisma/client';
 import { nav } from '@/data/navigation';
 import { Container } from '@/components/container';
 
@@ -60,10 +60,10 @@ export function SiteFooter({ site }: SiteFooterProps) {
               Sosial Media
             </h4>
             <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-              {site.social.instagram && (
+              {site.instagram && (
                 <li>
                   <a
-                    href={site.social.instagram}
+                    href={site.instagram}
                     className="transition hover:text-emerald-600"
                     rel="noopener noreferrer"
                   >
@@ -71,10 +71,10 @@ export function SiteFooter({ site }: SiteFooterProps) {
                   </a>
                 </li>
               )}
-              {site.social.tiktok && (
+              {site.tiktok && (
                 <li>
                   <a
-                    href={site.social.tiktok}
+                    href={site.tiktok}
                     className="transition hover:text-emerald-600"
                     rel="noopener noreferrer"
                   >
@@ -82,10 +82,10 @@ export function SiteFooter({ site }: SiteFooterProps) {
                   </a>
                 </li>
               )}
-              {site.social.facebook && (
+              {site.facebook && (
                 <li>
                   <a
-                    href={site.social.facebook}
+                    href={site.facebook}
                     className="transition hover:text-emerald-600"
                     rel="noopener noreferrer"
                   >

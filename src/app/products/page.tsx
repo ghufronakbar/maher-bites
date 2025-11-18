@@ -17,20 +17,17 @@ export const metadata: Metadata = {
   },
 };
 
-interface ProductsPageProps {
+export default async function ProductsPage(props: {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}
-
-export default async function ProductsPage({
-  searchParams,
-}: ProductsPageProps) {
+}) {
+  const searchParams = await props.searchParams;
   const [products, categories, site] = await Promise.all([
     getAllProducts(),
     getAllCategories(),
     getSite(),
   ]);
 
-  const categoryParam = (await searchParams)?.category;
+  const categoryParam = await searchParams?.category;
   const categorySlug = Array.isArray(categoryParam)
     ? categoryParam[0]
     : categoryParam;

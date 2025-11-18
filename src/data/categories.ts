@@ -1,6 +1,6 @@
-import type { Category } from './schema';
 import { prisma } from '@/lib/prisma';
 import { CACHE_TAGS, revalidateTag, withCache } from '@/lib/cache';
+import type { Category } from '@prisma/client';
 
 const fetchCategories = withCache(
   async () =>
@@ -11,13 +11,7 @@ const fetchCategories = withCache(
 );
 
 export async function getAllCategories(): Promise<Category[]> {
-  const categories = await fetchCategories();
-  return categories.map((category) => ({
-    id: category.id,
-    slug: category.slug,
-    name: category.name,
-    description: category.description ?? undefined,
-  }));
+  return await fetchCategories();
 }
 
 export async function getCategoryById(id: string) {

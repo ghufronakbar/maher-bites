@@ -18,6 +18,7 @@ model Site {
   phone              String
   address            String
   hours              String?
+  mapUrl             String?
   logoLight          String
   logoDark           String
   instagram          String?

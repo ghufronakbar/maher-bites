@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { uploadToCloudinary } from '@/components/dashboard/cloudinary-upload';
+import type { ProductImage } from './types';
 
 interface ImageField {
   id: string;
@@ -14,12 +15,7 @@ interface ImageField {
 
 interface ImageFieldsProps {
   name: string;
-  initialImages: Array<{
-    src: string;
-    alt: string;
-    width?: number | null;
-    height?: number | null;
-  }>;
+  initialImages: ProductImage[];
 }
 
 function createEmptyImage(): ImageField {

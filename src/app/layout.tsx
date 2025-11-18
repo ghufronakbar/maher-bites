@@ -58,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [seo.ogImage],
     },
     icons: {
-      icon: '/favicon.ico',
+      icon: site.logoLight ?? '/favicon.ico',
     },
   };
 }

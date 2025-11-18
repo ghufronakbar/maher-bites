@@ -1,4 +1,4 @@
-import type { FAQ } from '@/data/schema';
+import type { FAQ } from '@prisma/client';
 import { Container } from '@/components/container';
 
 interface FAQSectionProps {
@@ -22,13 +22,13 @@ export function FAQSection({ faqs }: FAQSectionProps) {
         <div className="mt-10 space-y-6">
           {faqs.map((faq) => (
             <details
-              key={faq.q}
+              key={faq.question}
               className="group rounded-3xl border border-amber-100 bg-amber-50/50 p-6 shadow-sm"
             >
               <summary className="cursor-pointer list-none text-left text-lg font-semibold text-zinc-900">
-                {faq.q}
+                {faq.question}
               </summary>
-              <p className="mt-2 text-sm text-zinc-600">{faq.a}</p>
+              <p className="mt-2 text-sm text-zinc-600">{faq.answer}</p>
             </details>
           ))}
         </div>

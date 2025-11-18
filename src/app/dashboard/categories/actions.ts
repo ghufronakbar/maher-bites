@@ -1,45 +1,79 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { deleteCategory, upsertCategory } from '@/data/categories';
+import { z } from 'zod';
 
-export async function upsertCategoryAction(formData: FormData) {
-  const id = formData.get('id')?.toString().trim();
-  const slug = formData.get('slug')?.toString().trim();
-  const name = formData.get('name')?.toString().trim();
+const UpsertCategorySchema = z.object({
+  id: z.string(),
+  slug: z.string(),
+  name: z.string(),
+  description: z.string().optional(),
+});
 
-  if (!id || !slug || !name) {
-    redirect('/dashboard/categories?status=error');
+type ActionResponse = {
+  success: boolean;
+  message: string;
+};
+
+export async function upsertCategoryAction(
+  formData: FormData,
+): Promise<ActionResponse> {
+  const data = {
+    id: formData.get('id')?.toString().trim(),
+    slug: formData.get('slug')?.toString().trim(),
+    name: formData.get('name')?.toString().trim(),
+    description: formData.get('description')?.toString() ?? undefined,
+  };
+
+  const parsed = UpsertCategorySchema.safeParse(data);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      message: 'Gagal menyimpan kategori, data tidak valid',
+    };
   }
 
   try {
-    await upsertCategory({
-      id,
-      slug,
-      name,
-      description: formData.get('description')?.toString() ?? null,
-    });
+    await upsertCategory(parsed.data);
     revalidatePath('/dashboard/categories');
-    redirect('/dashboard/categories?status=success');
+    return {
+      success: true,
+      message: 'Kategori berhasil disimpan',
+    };
   } catch (error) {
     console.error('upsertCategoryAction error', error);
-    redirect('/dashboard/categories?status=error');
+    return {
+      success: false,
+      message: 'Gagal menyimpan kategori',
+    };
   }
 }
 
-export async function deleteCategoryAction(formData: FormData) {
+export async function deleteCategoryAction(
+  formData: FormData,
+): Promise<ActionResponse> {
   const id = formData.get('id')?.toString();
   if (!id) {
-    redirect('/dashboard/categories?status=error');
+    return {
+      success: false,
+      message: 'Gagal menghapus kategori, ID tidak ditemukan',
+    };
   }
 
   try {
     await deleteCategory(id);
     revalidatePath('/dashboard/categories');
-    redirect('/dashboard/categories?status=deleted');
+    return {
+      success: true,
+      message: 'Kategori berhasil dihapus',
+    };
   } catch (error) {
     console.error('deleteCategoryAction error', error);
-    redirect('/dashboard/categories?status=error');
+    return {
+      success: false,
+      message: 'Gagal menghapus kategori',
+    };
   }
 }

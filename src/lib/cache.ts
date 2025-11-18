@@ -1,4 +1,4 @@
-import { unstable_cache, revalidateTag as nextRevalidateTag } from "next/cache";
+import { unstable_cache, revalidateTag } from "next/cache";
 
 export const CACHE_TAGS = {
   site: "site",
@@ -10,9 +10,7 @@ export const CACHE_TAGS = {
 
 type CacheTag = (typeof CACHE_TAGS)[keyof typeof CACHE_TAGS];
 
-export function revalidateTag(tag: CacheTag) {
-  nextRevalidateTag(tag);
-}
+export { revalidateTag };
 
 interface CacheOptions {
   key: string[];

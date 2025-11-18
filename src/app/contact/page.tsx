@@ -68,30 +68,30 @@ export default async function ContactPage() {
           <div>
             <h3 className="text-lg font-semibold text-zinc-900">Sosial</h3>
             <ul className="mt-2 space-y-1">
-              {site.social.instagram && (
+              {site.instagram && (
                 <li>
                   <Link
-                    href={site.social.instagram}
+                    href={site.instagram}
                     className="text-emerald-600 transition hover:text-emerald-700"
                   >
                     Instagram
                   </Link>
                 </li>
               )}
-              {site.social.tiktok && (
+              {site.tiktok && (
                 <li>
                   <Link
-                    href={site.social.tiktok}
+                    href={site.tiktok}
                     className="text-emerald-600 transition hover:text-emerald-700"
                   >
                     TikTok
                   </Link>
                 </li>
               )}
-              {site.social.facebook && (
+              {site.facebook && (
                 <li>
                   <Link
-                    href={site.social.facebook}
+                    href={site.facebook}
                     className="text-emerald-600 transition hover:text-emerald-700"
                   >
                     Facebook

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { revalidateTag, CACHE_TAGS } from '@/lib/cache';
+import { CACHE_TAGS } from '@/lib/cache';
+import { revalidateTag } from 'next/cache';
 
 const siteSeed = {
   id: 1,

@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import type { ProductVariant } from './types';
 
 interface VariantOptionState {
   id: string;
@@ -17,16 +18,7 @@ interface VariantState {
 
 interface VariantFieldsProps {
   name: string;
-  initialVariants:
-    | Array<{
-        name: string;
-        options: Array<{
-          label: string;
-          value?: string | null;
-          price: number;
-        }>;
-      }>
-    | undefined;
+  initialVariants: ProductVariant[];
 }
 
 const createOption = (): VariantOptionState => ({

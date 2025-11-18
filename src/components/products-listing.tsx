@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type { Category, Product } from '@/data/schema';
+import type { Category } from '@prisma/client';
+import type { ProductRecord as Product } from '@/data/products';
 import { cn } from '@/lib/utils';
 import { ProductCard } from '@/components/product-card';
 

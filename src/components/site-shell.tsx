@@ -17,7 +17,7 @@ export async function SiteShell({ children }: SiteShellProps) {
     '@type': 'Organization',
     name: site.name,
     url: site.domain,
-    logo: new URL(site.logo.light, site.domain).toString(),
+    logo: new URL(site.logoLight, site.domain).toString(),
     email: site.email,
     telephone: site.phone,
     address: {
@@ -25,7 +25,7 @@ export async function SiteShell({ children }: SiteShellProps) {
       streetAddress: site.address,
       addressCountry: 'ID',
     },
-    sameAs: Object.values(site.social).filter(Boolean),
+    sameAs: [site.instagram, site.tiktok, site.facebook].filter(Boolean),
     contactPoint: [
       {
         '@type': 'ContactPoint',

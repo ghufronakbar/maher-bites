@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Product } from '@/data/schema';
+import type { ProductRecord as Product } from '@/data/products';
 import { createWAOrderLink } from '@/data/wa';
 import { trackWAEvent } from '@/lib/analytics';
 import { formatCurrency } from '@/lib/utils';
@@ -45,7 +45,7 @@ export function ProductCard({
         </div>
         <div className="mt-auto space-y-2">
           <div className="flex items-center justify-between text-sm font-semibold text-zinc-900">
-            <span>{formatCurrency(product.price, product.currency)}</span>
+            <span>{formatCurrency(product.price, product.currency as 'IDR')}</span>
             {product.rating ? (
               <span aria-label={`Rating ${product.rating} dari 5`} className="flex items-center gap-1 text-amber-500">
                 ★ {product.rating.toFixed(1)}

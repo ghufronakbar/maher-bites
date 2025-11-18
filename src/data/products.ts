@@ -78,14 +78,13 @@ function mapProduct(record: ProductRecord): ProductDTO {
   };
 }
 
-export async function getAllProducts(): Promise<ProductDTO[]> {
-  const products = await fetchProductRecords();
-  return products.map(mapProduct);
+export async function getAllProducts(): Promise<ProductRecord[]> {
+  return await fetchProductRecords();
 }
 
-export async function getProductBySlug(slug: string): Promise<ProductDTO | undefined> {
+export async function getProductBySlug(slug: string): Promise<ProductRecord | undefined> {
   const products = await fetchProductRecords();
-  return products.map(mapProduct).find((product) => product.slug === slug);
+  return products.find((product) => product.slug === slug);
 }
 
 export async function getProductsByCategoryId(categoryId: string) {
@@ -105,10 +104,9 @@ export async function searchProducts(query: string) {
     });
 }
 
-export async function getBestSellers(limit = 8) {
+export async function getBestSellers(limit = 8): Promise<ProductRecord[]> {
   const products = await fetchProductRecords();
   return products
-    .map(mapProduct)
     .filter((product) => product.bestSeller)
     .slice(0, limit);
 }
